@@ -1,38 +1,33 @@
 {
-  "name": "react",
+  "name": "expense-dashboard-imm",
   "version": "1.0.0",
-  "description": "Expense Analysis Dashboard",
-  "keywords": [
-    "react",
-    "recharts",
-    "dashboard"
-  ],
-  "main": "src/index.js",
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-scripts": "^5.0.0",
-    "recharts": "2.15.2",
-    "tailwindcss": "4.1.3",
-    "gh-pages": "^5.0.0",
-    "predeploy": "react-scripts build",
-    "deploy": "gh-pages -b gh-deploy -d build"
-  },
-  "devDependencies": {
-    "@types/react": "19.0.0",
-    "@types/react-dom": "19.0.0",
-    "loader-utils": "3.2.1",
-    "typescript": "5.7.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "recharts": "^2.5.0"
   },
   "homepage": "https://roshansivakumar.github.io/expense-dashboard-imm",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "react-scripts build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
-    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version"
+    ]
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
