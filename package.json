@@ -15,7 +15,7 @@
     "recharts": "2.15.2",
     "tailwindcss": "4.1.3",
     "gh-pages": "^5.0.0",
-    "predeploy": "npm run build",
+    "predeploy": "react-scripts build",
     "deploy": "gh-pages -b gh-deploy -d build"
   },
   "devDependencies": {
