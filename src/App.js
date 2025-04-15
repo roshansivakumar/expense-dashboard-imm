@@ -63,10 +63,10 @@ months.forEach((month) => {
   );
 });
 
-// Define distinct color sets for categories and months
+// Define distinct color sets for both categories and months
 // =======================================================
 
-// Colors for expense categories (for pie charts)
+// Colors for expense categories
 const CATEGORY_COLORS = {
   Blitz: "#4F81BD", // Strong blue
   Capability: "#C0504D", // Rust red
@@ -76,7 +76,7 @@ const CATEGORY_COLORS = {
   Sound: "#F79646", // Orange
 };
 
-// Colors for months (for bar charts)
+// Colors for months
 const MONTH_COLORS = {
   February: "#5B9BD5", // Medium blue
   March: "#70AD47", // Green
@@ -224,21 +224,23 @@ export default function App() {
               .map((month) => (
                 <div key={month} className="pie-card">
                   <h2>{month} Distribution</h2>
-                  <ResponsiveContainer width="100%" height={400}>
+                  <ResponsiveContainer width="100%" height={350}>
                     <PieChart>
                       <Pie
                         data={pieChartData[month] || []}
                         cx="50%"
                         cy="50%"
                         labelLine={true}
-                        outerRadius={140}
+                        outerRadius={120}
                         fill="#8884d8"
                         dataKey="value"
                         nameKey="name"
-                        label={({ name, percentage }) =>
-                          name && percentage ? `${name}: ${percentage}%` : ""
-                        }
-                        labelStyle={{ fontSize: 14 }}
+                        label={(props) => {
+                          const { name, percentage } = props;
+                          return name && percentage
+                            ? `${name}: ${percentage}%`
+                            : "";
+                        }}
                       >
                         {(pieChartData[month] || []).map((entry) => (
                           <Cell
