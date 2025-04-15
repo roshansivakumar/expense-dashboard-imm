@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/expense-dashboard-imm/static/css/main.a0f1436a.css",
+    "main.js": "/expense-dashboard-imm/static/js/main.892ab6e3.js",
+    "index.html": "/expense-dashboard-imm/index.html",
+    "main.a0f1436a.css.map": "/expense-dashboard-imm/static/css/main.a0f1436a.css.map",
+    "main.892ab6e3.js.map": "/expense-dashboard-imm/static/js/main.892ab6e3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a0f1436a.css",
+    "static/js/main.892ab6e3.js"
+  ]
+}
