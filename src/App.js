@@ -28,7 +28,7 @@ const categoryData = [
 // Sample data for top purchases per month
 const topPurchasesData = {
   February: [
-    { item: "DRV2700EVM", amount: 178.80 },
+    { item: "DRV2700EVM", amount: 178.8 },
     { item: "Fishing Light Green 35000lm", amount: 67.99 },
     { item: "Fishing Light Green 10000lm", amount: 59.97 },
     { item: "2S LiPo battery", amount: 51.98 },
@@ -43,10 +43,10 @@ const topPurchasesData = {
   ],
   April: [
     { item: "FNIRSI 1013D", amount: 147.99 },
-    { item: "Placeholder", amount: 0.00 },
-    { item: "Placeholder", amount: 0.00 },
-    { item: "Placeholder", amount: 0.00 },
-    { item: "Placeholder", amount: 0.00 },
+    { item: "Placeholder", amount: 0.0 },
+    { item: "Placeholder", amount: 0.0 },
+    { item: "Placeholder", amount: 0.0 },
+    { item: "Placeholder", amount: 0.0 },
   ],
   May: [],
 };
@@ -63,16 +63,26 @@ months.forEach((month) => {
   );
 });
 
-// Colors for categories
-const COLORS = [
-  "#8884d8",
-  "#82ca9d",
-  "#ffc658",
-  "#ff8042",
-  "#0088FE",
-  "#00C49F",
-];
+// Define distinct color sets for categories and months
 // =======================================================
+
+// Colors for expense categories (for pie charts)
+const CATEGORY_COLORS = {
+  Blitz: "#4F81BD", // Strong blue
+  Capability: "#C0504D", // Rust red
+  BLE: "#9BBB59", // Olive green
+  General: "#8064A2", // Purple
+  Others: "#4BACC6", // Teal blue
+  Sound: "#F79646", // Orange
+};
+
+// Colors for months (for bar charts)
+const MONTH_COLORS = {
+  February: "#5B9BD5", // Medium blue
+  March: "#70AD47", // Green
+  April: "#FFC000", // Amber yellow
+  May: "#ED7D31", // Coral orange
+};
 
 export default function App() {
   // State to track selected month for top purchases view
@@ -80,7 +90,7 @@ export default function App() {
 
   const formatCurrency = (value) => {
     if (value === null || value === undefined) return "$0.00";
-    return `${parseFloat(value).toFixed(2)}`;
+    return `$${parseFloat(value).toFixed(2)}`;
   };
 
   // Generate pie chart data for each month
@@ -132,11 +142,13 @@ export default function App() {
             <Legend />
             <Bar
               dataKey="amount"
-              fill="#2196F3"
+              fill={MONTH_COLORS[month] || "#2196F3"}
               name={`${month} Purchases`}
               label={{
                 position: "right",
                 formatter: (value) => formatCurrency(value),
+                fill: "#333",
+                fontSize: 12,
               }}
             />
           </BarChart>
@@ -193,11 +205,11 @@ export default function App() {
                 <YAxis tickFormatter={formatCurrency} />
                 <Tooltip formatter={(value) => formatCurrency(value)} />
                 <Legend />
-                {months.map((month, index) => (
+                {months.map((month) => (
                   <Bar
                     key={month}
                     dataKey={month}
-                    fill={COLORS[index % COLORS.length]}
+                    fill={MONTH_COLORS[month]}
                     name={`${month} 2025`}
                   />
                 ))}
@@ -212,25 +224,26 @@ export default function App() {
               .map((month) => (
                 <div key={month} className="pie-card">
                   <h2>{month} Distribution</h2>
-                  <ResponsiveContainer width="100%" height={300}>
+                  <ResponsiveContainer width="100%" height={400}>
                     <PieChart>
                       <Pie
                         data={pieChartData[month] || []}
                         cx="50%"
                         cy="50%"
                         labelLine={true}
-                        outerRadius={100}
+                        outerRadius={140}
                         fill="#8884d8"
                         dataKey="value"
                         nameKey="name"
                         label={({ name, percentage }) =>
                           name && percentage ? `${name}: ${percentage}%` : ""
                         }
+                        labelStyle={{ fontSize: 14 }}
                       >
-                        {(pieChartData[month] || []).map((entry, index) => (
+                        {(pieChartData[month] || []).map((entry) => (
                           <Cell
-                            key={`cell-${index}`}
-                            fill={COLORS[index % COLORS.length]}
+                            key={`cell-${entry.name}`}
+                            fill={CATEGORY_COLORS[entry.name]}
                           />
                         ))}
                       </Pie>
@@ -249,6 +262,10 @@ export default function App() {
               <li>
                 March spending was more diversified across 6 different
                 categories - prototyping and dev
+              </li>
+              <li>
+                April shows mixed spending between Blitz (12.2%) and General
+                (87.8%)
               </li>
             </ul>
           </div>
