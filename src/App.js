@@ -17,10 +17,10 @@ import "./styles.css";
 // DATA SECTION - Update this part when you have new data
 // =======================================================
 const categoryData = [
-  { category: "Blitz", February: 530.52, March: 37.58, April: 0, May: 0 },
+  { category: "Blitz", February: 530.52, March: 37.58, April: 21.94, May: 0 },
   { category: "Capability", February: 0, March: 238.57, April: 0, May: 0 },
   { category: "BLE", February: 0, March: 88.84, April: 0, May: 0 },
-  { category: "General", February: 0, March: 62.63, April: 0, May: 0 },
+  { category: "General", February: 0, March: 62.63, April: 157.98, May: 0 },
   { category: "Others", February: 0, March: 38.06, April: 0, May: 0 },
   { category: "Sound", February: 0, March: 15.96, April: 0, May: 0 },
 ];
@@ -28,20 +28,26 @@ const categoryData = [
 // Sample data for top purchases per month
 const topPurchasesData = {
   February: [
-    { item: "HV500", amount: 198.5 },
-    { item: "FNIRSI 1013D", amount: 140.25 },
-    { item: "Signal & Power Book", amount: 85.99 },
-    { item: "Fast Analytical Book", amount: 75.78 },
-    { item: "Fishing Light 35000lm", amount: 65.5 },
+    { item: "DRV2700EVM", amount: 178.80 },
+    { item: "Fishing Light Green 35000lm", amount: 67.99 },
+    { item: "Fishing Light Green 10000lm", amount: 59.97 },
+    { item: "2S LiPo battery", amount: 51.98 },
+    { item: "1S Drone LiPo", amount: 41.67 },
   ],
   March: [
-    { item: "Capability Module XZ", amount: 150.75 },
-    { item: "BLE Developer Kit", amount: 88.84 },
-    { item: "System Interface", amount: 62.63 },
-    { item: "Sound Module", amount: 15.96 },
-    { item: "Other Components", amount: 38.06 },
+    { item: "Signal & Power Book", amount: 85.06 },
+    { item: "NRF52 DK", amount: 78.84 },
+    { item: "Fast Analytical Book", amount: 75.58 },
+    { item: "OPAmps for everyone", amount: 41.94 },
+    { item: "PCB Design Fundamentals", amount: 32.95 },
   ],
-  April: [],
+  April: [
+    { item: "FNIRSI 1013D", amount: 147.99 },
+    { item: "Placeholder", amount: 0.00 },
+    { item: "Placeholder", amount: 0.00 },
+    { item: "Placeholder", amount: 0.00 },
+    { item: "Placeholder", amount: 0.00 },
+  ],
   May: [],
 };
 
@@ -147,7 +153,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <h1>Expense Analysis: {months.join(", ")} 2025</h1>
+      <h1>Expense Analysis 2025</h1>
 
       {/* Monthly Totals with Top Purchases Tab */}
       <div className="card-container">
@@ -243,10 +249,6 @@ export default function App() {
               <li>
                 March spending was more diversified across 6 different
                 categories - prototyping and dev
-              </li>
-              <li>
-                Capability development became a major expense area in March
-                (49.5% of total)
               </li>
             </ul>
           </div>
